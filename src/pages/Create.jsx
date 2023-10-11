@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
 function Create() {
-    const [title , setTitle] = useState('')
-    const [ ingredient , setIngredient] = useState('')
-    const [time , setTime] = useState("")
-    const [method , setMethod] = useState('')
+    const [title , setTitle] = useState()
+    const [ ingredient , setIngredient] = useState()
+    const [time , setTime] = useState()
+    const [method , setMethod] = useState()
 
 
     const handleSubmit = (e)=>{
         e.preventDefault()
 
 
-        setIngredient("")
-        setMethod('')
-        setTime('')
-        setTitle('')
+        // setIngredient('')
+        // setMethod('')
+        // setTime('')
+        // setTitle('')
     }
   return (
     <div className="grid place-items-center">
