@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import BreadCrumbs from './BreadCrumbs'
 
 function Navbar() {
   return (
@@ -15,7 +14,6 @@ function Navbar() {
         </Link>
     </div>
     </div>
-    <BreadCrumbs/>
     </>
   )
 }

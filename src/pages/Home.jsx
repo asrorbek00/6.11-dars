@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch'
 import RecipieList from './RecipieList';
 
 function Home() {
-    const {data:recipies, isPending , error} = useFetch("https://proximal-silent-mosquito.glitch.me/recipes")
+    const {data:recipies, isPending , error} = useFetch("https://arrow-gamy-adasaurus.glitch.me/recipes")
   return (
     <>
         {recipies && <RecipieList recipies={recipies}/>}

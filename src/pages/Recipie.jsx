@@ -4,7 +4,7 @@ import {useFetch} from "../hooks/useFetch"
 function Recipie() {
 
     const {id} = useParams()
-    const url = 'https://proximal-silent-mosquito.glitch.me/recipes'+ id
+    const url = 'https://arrow-gamy-adasaurus.glitch.me/recipes/'+ id
 
     const {data:recipie , isPending , error} = useFetch(url)
   return (

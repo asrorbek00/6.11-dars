@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react'
 
- export function useFetch(url) {
+ export function useFetch(url , method = "GET") {
     const[data, setData] = useState(null)
     const [isPending , setIsPending] = useState(false)
     const [error , setError] = useState(false)
 
+    const [postData , setPostData]  = useState()
+
+    const getNewRecipie= (newRecipie) =>{
+            setPostData({
+                method:"POST",
+                headers: {
+                    "Content-Type" : "Application/json"
+                },
+                body:JSON.stringify(newRecipie)
+            })
+    }
+
     useEffect(() =>{
 
-        const getData = async () =>{
+        const getData = async (fetchHeaders) =>{
 
             try {
-                const req =  await fetch(url)
+                const req =  await fetch(url , {...fetchHeaders})
                 if(!req.ok){
                     throw new Error(req.statusText)
                 }
@@ -26,7 +38,15 @@ import React, { useEffect, useState } from 'react'
             }
         }
         getData()
-    },[url])
-    return {data , isPending , error}
+
+        if(method == "POST" && postData){
+            getData(postData)
+        }
+        if(method == "GET"){
+            getData()
+        }
+
+    },[url , method , postData])
+    return {data , isPending , error, getNewRecipie}
 }
 
