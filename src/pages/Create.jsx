@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useFetch } from "../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Create() {
   const [title, setTitle] = useState("");
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [time, setTime] = useState("");
+  const [cookingTime, setTime] = useState("");
   const [method, setMethod] = useState("");
   const [img, setImg] = useState("");
   const navigate = useNavigate();
@@ -22,18 +23,12 @@ function Create() {
       getNewRecipie({
         id: uuidv4(),
         title,
-        time: `${time} minutes`,
+        cookingTime: `${cookingTime} minutes`,
         method,
         img,
+        ingredients
       });
-
-    setIngredient("");
-    setMethod("");
-    setTime("");
-    setTitle("");
-    setImg("");
-    setIngredients([]);
-   
+   toast.success("added succesfully")
   };
   const handleAdd = (e) => {
     e.preventDefault();
@@ -45,12 +40,14 @@ function Create() {
     }
     setIngredient("");
   };
+
+  // useEffect(()=>{
+  //   if(data){
+  //     navigate('/')
+  //   }
+  // },[data])
       
-  useEffect(()=>{
-    if(data){
-      navigate('/')
-    }
-  },[data])
+  
 
 
 
@@ -106,7 +103,7 @@ function Create() {
           </label>
           <input
             required
-            value={time}
+            value={cookingTime}
             type="text"
             placeholder="Type here"
             className="input input-bordered w-full max-w-xs"
@@ -141,10 +138,10 @@ function Create() {
             onChange={(e) => setMethod(e.target.value)}
           />
         </div>
-
         <button type="submit" className="btn btn-secondary btn-outline mt-3 ">
           Submit
         </button>
+        
       </form>
     </div>
   );

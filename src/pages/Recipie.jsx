@@ -16,7 +16,9 @@ function Recipie() {
     <div className="card-body items-center text-center">
       <h2 className="card-title">{recipie.title}</h2>
       <p><span className="text-black font-bold">Method:</span>{recipie.method}</p>
-      <p><span className="text-black font-bold">Ingredients:</span>{recipie.ingredients}</p>
+      <p><span className="text-black font-bold">Ingredients:</span>{recipie.ingredients.map((ing)=>{
+        return <span key={ing}>{ing},</span>
+      })}</p>
       <h1><span className="text-black font-bold">Cookin Time:</span>{recipie.cookingTime}</h1>
       <div className="card-actions">
         <Link to='/' className="btn btn-primary">Back</Link>
